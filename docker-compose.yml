@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  apache:
+    image: "httpd:latest"
+    container_name: "newname"
+    dns: "8.8.8.8"
+    labels:
+      Name: "Somename"
+      Env: "Dev"
+      Created_by: "Andrew"
+    ports:
+      - "80:80"
+    volumes:
+      - Share:/Share
+
+
+  db:
+    image: "mysql:latest"
+    container_name: "db"
+    dns: "8.8.8.8"
+    labels:
+      - "dbhost"
+      - "second_dbhost"
+    ports:
+      - "3306:3306"
+    volumes:
+      - Share:/Share
+volumes:
+   Share:
